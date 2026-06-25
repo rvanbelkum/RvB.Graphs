@@ -45,8 +45,12 @@ public static class GraphExtensionsAdj {
         }
     }
 
-    extension<TVertex>(IGraph<TVertex>) where TVertex : notnull {
-        public static IGraph<TVertex> FromAdjacencyList((TVertex, TVertex[])[] adjacencyList, bool allowSelfEdges = false) {
+    extension<TVertex>(Graph<TVertex>) where TVertex : notnull {
+        public static Graph<TVertex> FromAdjacencyList((TVertex, TVertex[])[] adjacencyList, bool allowSelfEdges = false) {
+            var graphType = allowSelfEdges ? GraphType.Directed | GraphType.AllowSelfEdges : GraphType.Directed;
+            return new Graph<TVertex>(graphType, adjacencyList.Select(a => (a.Item1, a.Item2.AsEnumerable())));
+        }
+        public static Graph<TVertex> FromAdjacencyList(IEnumerable<(TVertex, IEnumerable<TVertex>)> adjacencyList, bool allowSelfEdges = false) {
             var graphType = allowSelfEdges ? GraphType.Directed | GraphType.AllowSelfEdges : GraphType.Directed;
             return new Graph<TVertex>(graphType, adjacencyList.Select(a => (a.Item1, a.Item2.AsEnumerable())));
         }

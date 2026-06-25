@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../RvB.Collections/RvB.Collections.csproj" />
+  <Project Path="RvB.Graphs.csproj" />
+</Solution>

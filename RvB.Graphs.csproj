@@ -8,6 +8,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove=".gitattributes" />
+	  <None Remove=".gitignore" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <ProjectReference Include="..\RvB.Collections\RvB.Collections.csproj" />
 	</ItemGroup>
 
